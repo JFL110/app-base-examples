@@ -1,0 +1,56 @@
+def appengineVersion = "1.9.42"
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
+
+buildscript {  
+  repositories {
+    jcenter() 
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'com.google.cloud.tools:appengine-gradle-plugin:+'
+  }
+}
+
+repositories { 
+  maven {
+    url 'https://maven-central.storage.googleapis.com' 
+  }
+  maven {
+    url 'https://github.com/JFL110/app-base-prender/raw/maven-repo'
+  }
+  mavenLocal()
+  jcenter()
+  mavenCentral()
+}
+
+apply plugin: 'eclipse'
+apply plugin: 'java' 
+apply plugin: 'war'    
+apply plugin: 'com.google.cloud.tools.appengine'
+
+dependencies {
+  compile group: 'com.google.appengine', name: 'appengine-api-1.0-sdk', version: '1.9.42'
+  compile group: 'org.jfl110', name: 'app-base-prender', version:'1.0.0'
+
+  testCompile group: 'org.mockito', name: 'mockito-all', version:'1.9.5'
+  testCompile group: 'junit', name: 'junit', version:'4.12'
+}
+
+sourceSets.main.output.classesDir = 'build/exploded-app/WEB-INF/classes'
+
+appengine {  
+  run {   
+    port = 8888     
+  }
+  
+  deploy {  
+    stopPreviousVersion = true 
+    promote = true  
+  }
+}
+
+sourceCompatibility = 1.7 
+targetCompatibility = 1.7 
