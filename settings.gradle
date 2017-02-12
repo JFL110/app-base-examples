@@ -1,2 +1,2 @@
 rootProject.name = 'app-base-examples'
-include ':simplest-site'
+include ':simple-gae-app'
