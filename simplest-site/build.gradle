@@ -1,3 +1,4 @@
+gradle.startParameter.showStacktrace = org.gradle.api.logging.configuration.ShowStacktrace.ALWAYS
 def appengineVersion = "1.9.42"
 
 task wrapper(type: Wrapper) {
