@@ -1,5 +1,5 @@
 
-def appengineVersion = "1.9.42"
+//def appengineVersion = "1.9.42"
 
 
 buildscript {  
@@ -26,7 +26,7 @@ repositories {
 apply plugin: 'eclipse'
 apply plugin: 'java' 
 apply plugin: 'war'    
-apply plugin: 'com.google.cloud.tools.appengine'
+//apply plugin: 'com.google.cloud.tools.appengine'
 
 dependencies {
   compile group: 'com.google.appengine', name: 'appengine-api-1.0-sdk', version: '1.9.42'
@@ -38,7 +38,7 @@ dependencies {
 
 sourceSets.main.output.classesDir = 'build/exploded-app/WEB-INF/classes'
 
-appengine {  
+/*appengine {  
   run {   
     port = 8888     
   }
@@ -47,7 +47,7 @@ appengine {
     stopPreviousVersion = true 
     promote = true  
   }
-}
+}*/
 
 sourceCompatibility = 1.7 
 targetCompatibility = 1.7 
