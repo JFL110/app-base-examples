@@ -1,9 +1,6 @@
-gradle.startParameter.showStacktrace = org.gradle.api.logging.configuration.ShowStacktrace.ALWAYS
+
 def appengineVersion = "1.9.42"
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.0'
-}
 
 buildscript {  
   repositories {
@@ -26,7 +23,6 @@ repositories {
   jcenter()
   mavenCentral()
 }
-
 apply plugin: 'eclipse'
 apply plugin: 'java' 
 apply plugin: 'war'    
