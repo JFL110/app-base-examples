@@ -44,7 +44,9 @@ appengine {
   deploy {  
     stopPreviousVersion = true 
     promote = true  
+    project = "simple-gae-app"
   }
+
 }
 
 sourceCompatibility = 1.7 
