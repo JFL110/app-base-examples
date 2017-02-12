@@ -4,4 +4,8 @@
   <version>1</version>
   <threadsafe>true</threadsafe>
   <sessions-enabled>false</sessions-enabled> 
+  
+  <static-files>
+  	<include path="**.jpg"  />
+  </static-files>
 </appengine-web-app>

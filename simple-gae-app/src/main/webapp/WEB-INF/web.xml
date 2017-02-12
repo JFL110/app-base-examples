@@ -19,16 +19,6 @@
 		<dispatcher>ERROR</dispatcher>
 		<dispatcher>REQUEST</dispatcher> 
 	</filter-mapping>
-	
-	  <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>all</web-resource-name>
-            <url-pattern>/*</url-pattern>
-        </web-resource-collection>
-        <user-data-constraint>
-            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-        </user-data-constraint>
-    </security-constraint>
 
 	<listener>
 		<listener-class>org.jfl110.example.AppServletContextListener</listener-class>
