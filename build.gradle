@@ -1,0 +1,4 @@
+subprojects {
+    task buildJar << { task -> println "$task.project.name" }
+    task runBuildJar(dependsOn: buildJar) {}
+}
