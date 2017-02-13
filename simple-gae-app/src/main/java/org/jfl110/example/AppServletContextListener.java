@@ -5,14 +5,11 @@ import static org.jfl110.prender.api.HtmlPageRenderNode.localHtmlPage;
 import static org.jfl110.prender.api.StringRenderNodes.string;
 import static org.jfl110.prender.api.render.RenderMaps.renderMap;
 import static org.jfl110.prender.api.resources.ServletContextResourceSources.servletContextResource;
-
-import java.util.logging.Logger;
+import static org.jfl110.prender.impl.parse.RenderTags.tag;
 
 import org.jfl110.prender.api.RenderNode;
-import org.jfl110.prender.api.parse.RenderTag;
 import org.jfl110.prender.api.render.RenderMap;
 import org.jfl110.prender.impl.parse.DefaultParsingModule;
-import org.jfl110.prender.impl.parse.RenderTags;
 import org.jfl110.prender.impl.render.DefaultRenderingModule;
 import org.jfl110.prender.impl.resource.DefaultResourceSourceModule;
 import org.jfl110.prender.impl.serve.Serving;
@@ -29,11 +26,8 @@ import com.google.inject.servlet.ServletModule;
  */
 public class AppServletContextListener extends GuiceServletContextListener {
 
-	private static Logger logger = Logger.getLogger(AppServletContextListener.class.getSimpleName());
-
 	@Override
 	protected Injector getInjector() {
-		logger.info("Creating injector");
 		return Guice.createInjector(new AppModule());
 	}
 
@@ -51,16 +45,12 @@ public class AppServletContextListener extends GuiceServletContextListener {
 			install(new DefaultParsingModule());
 
 			RenderMap indexPage = renderMap(TEMPLATE_PAGE);
-			indexPage.putPlaceholderValue(TITLE_PLACEHOLDER_KEY, titleTag("Simple GAE App"));
+			indexPage.putPlaceholderValue(TITLE_PLACEHOLDER_KEY, tag("title").addChild(string("Simple GAE App")).build());
 			indexPage.putPlaceholderValue(CONTENT_PLACEHOLDER_KEY, INDEX_PAGE_CONTENT);
 
 			install(Serving.of("/").with(indexPage));
 			install(Serving.of("/word").with(string("bird")));
 
 		}
-	}
-
-	private RenderTag titleTag(String title) {
-		return RenderTags.tag("title").addChild(string(title)).build();
 	}
 }
