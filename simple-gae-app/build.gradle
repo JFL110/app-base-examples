@@ -41,11 +41,20 @@ jacocoTestReport {
 }
 
 dependencies {
-  compile group: 'com.google.appengine', name: 'appengine-api-1.0-sdk', version: '1.9.42'
-  compile group: 'org.jfl110', name: 'app-base-prender', version:'1.0.0'
+  providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
 
+  compile group: 'com.google.appengine', name: 'appengine-api-1.0-sdk', version: '1.9.42'
+  compile group: 'org.jfl110', name: 'app-base-prender', version:'1.0-SNAPSHOT'
+  
+  compile group: 'com.googlecode.objectify', name: 'objectify', version:'5.1.13'
+
+  testCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
   testCompile group: 'org.mockito', name: 'mockito-all', version:'1.9.5'
   testCompile group: 'junit', name: 'junit', version:'4.12'
+  
+  testCompile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.0.RC3'
+  testCompile group: 'org.eclipse.jetty', name: 'jetty-webapp', version: '9.4.0.RC3'
+  testCompile group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '2.26-b03'
 }
 
 sourceSets.main.output.classesDir = 'build/exploded-app/WEB-INF/classes'
