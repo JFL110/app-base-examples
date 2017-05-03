@@ -15,7 +15,7 @@ import org.junit.ClassRule;
 import org.junit.Test;
 
 /**
- * Integration test for authentication.
+ * Integration test for example app.
  *
  * @author JFL110
  */
