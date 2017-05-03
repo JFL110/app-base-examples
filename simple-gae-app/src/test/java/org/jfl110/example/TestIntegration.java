@@ -8,10 +8,10 @@ import static org.junit.Assert.assertThat;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
 
+import org.jfl110.testing.utils.EmbeddedJetty;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.ClassRule;
 import org.junit.Test;
 
 /**
@@ -19,19 +19,12 @@ import org.junit.Test;
  *
  * @author JFL110
  */
-public class TestAuthenticationIntegration {
+public class TestIntegration {
 
-	private static final EmbeddedJetty server = EmbeddedJetty.ebeddedJetty();
-
-	@BeforeClass
-	public static void beforeClass() throws Exception {
-		server.start();
-	}
-
-	@AfterClass
-	public static void afterClass() throws Exception {
-		server.stop();
-	}
+	@ClassRule
+	public static final EmbeddedJetty server = EmbeddedJetty.embeddedJetty()
+												.withContextListener(new AppServletContextListener())
+												.build();
 
 	
 	/**
