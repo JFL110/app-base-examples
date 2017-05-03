@@ -29,6 +29,9 @@ repositories {
   maven {
     url 'https://github.com/JFL110/app-base-prender/raw/maven-repo'
   }
+  maven {
+    url 'https://github.com/JFL110/gae-integration-test-support/raw/maven-repo'
+  }
   mavenLocal()
   jcenter()
   mavenCentral()
